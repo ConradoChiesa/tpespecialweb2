@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.0.1
+-- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 07-09-2018 a las 17:37:46
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 5.6.24
+-- Servidor: localhost
+-- Tiempo de generación: 07-09-2018 a las 21:38:39
+-- Versión del servidor: 10.1.32-MariaDB
+-- Versión de PHP: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,7 +33,7 @@ USE `personajes`;
 CREATE TABLE `hechos` (
   `id_hecho` int(50) NOT NULL,
   `id_personaje` int(50) NOT NULL,
-  `suceso` text COLLATE utf8_bin NOT NULL
+  `suceso` varchar(300) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -41,9 +43,9 @@ CREATE TABLE `hechos` (
 --
 
 CREATE TABLE `personaje` (
-  `id_personaje` int(11) NOT NULL,
+  `id_personaje` int(50) NOT NULL,
   `nombre` varchar(40) COLLATE utf8_bin NOT NULL,
-  `actividad` int(40) NOT NULL
+  `actividad` varchar(40) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -54,7 +56,8 @@ CREATE TABLE `personaje` (
 -- Indices de la tabla `hechos`
 --
 ALTER TABLE `hechos`
-  ADD PRIMARY KEY (`id_hecho`);
+  ADD PRIMARY KEY (`id_hecho`),
+  ADD UNIQUE KEY `fk` (`id_personaje`);
 
 --
 -- Indices de la tabla `personaje`
@@ -71,11 +74,24 @@ ALTER TABLE `personaje`
 --
 ALTER TABLE `hechos`
   MODIFY `id_hecho` int(50) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `personaje`
 --
 ALTER TABLE `personaje`
-  MODIFY `id_personaje` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_personaje` int(50) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `hechos`
+--
+ALTER TABLE `hechos`
+  ADD CONSTRAINT `hechos_ibfk_1` FOREIGN KEY (`id_personaje`) REFERENCES `personaje` (`id_personaje`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
