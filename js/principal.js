@@ -1,13 +1,30 @@
 'use strict';
-document.addEventListener("DOMContentLoaded", function(){
-    
+
+  document.addEventListener('DOMContentLoaded', function (){
+
+    document.querySelectorAll(".link-barra").forEach(function(li) {
+      li.addEventListener('click', f => cargar(li.dataset.url));
+    })
+
     let main = document.getElementById('main');
     let server = 'http://web-unicen.herokuapp.com/api/groups/';
     let url = server+'PocaiMatias82/tpespecial/';
-    cargarPortada();
-    document.getElementsByClassName('link-barra')[0].addEventListener('click', cargarPortada);
-    document.getElementsByClassName('link-barra')[1].addEventListener('click', cargarContacto);
-    document.getElementsByClassName('link-barra')[2].addEventListener('click', cargarTabla);
+    // document.addEventListener("DOMContentLoaded", function(){
+    // cargarPortada();
+    // document.getElementsByClassName('link-barra')[0].addEventListener('click', cargarPortada);
+    // document.getElementsByClassName('link-barra')[1].addEventListener('click', cargarContacto);
+    // document.getElementsByClassName('link-barra')[2].addEventListener('click', cargarTabla);
+
+    //Funcion agregada por Conrado
+    function cargar(url) {
+      fetch(url).then(
+        function (response) {
+          response.text().then(url => {
+            document.querySelector(".container-float").innerHTML = url;
+
+          })
+        })
+        }
 
     function cargarPortada() {
         fetch('htmls/portada.html')
@@ -42,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function(){
             .catch(error => main.innerHTML = 'Problema en el proceso '+error)
         });
     }
-    
+
     function cargarContacto() {
         fetch('htmls/contacto.html')
         .then(r => r.text())
@@ -97,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function(){
         conteTabla.innerHTML += html;
         escucharEventosTabla(json, conteTabla);
     }
-   
+
     function escucharEventosTabla(json, conteTabla){
         document.getElementById('btn-enviar').addEventListener('click', crearFila);
         document.getElementById('btnCrear3Filas').addEventListener('click', crearTresFilas);
@@ -144,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function(){
              mensaje.innerHTML='<h4>Agregar "personaje" y "fecha de nacimiento".</h4>';
         }
     }
-   
+
     function editarFila(json, i) {
       let ide = json.tpespecial[i]._id;
       let personaje = document.getElementById('input-perso').value;
@@ -209,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function(){
             mensaje.innerHTML='<h4>Agregar "personaje" y "fecha de nacimiento".</h4>';
         }
     }
-    
+
     function filtrar(json, conteTabla, valorNacimiento) {
         if (valorNacimiento=='value1'){
             for (let i=0; i<json.tpespecial.length; i++) {
@@ -217,8 +234,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 if (!((fechaNacimiento>1749)&&(fechaNacimiento<1800))) {
                     conteTabla.getElementsByTagName('tr')[i+1].classList.add('oculta');
                 } else {
-                    conteTabla.getElementsByTagName('tr')[i+1].classList.remove('oculta');        
-                } 
+                    conteTabla.getElementsByTagName('tr')[i+1].classList.remove('oculta');
+                }
             }
         } else if (valorNacimiento=='value2'){
             for (let i=0; i<json.tpespecial.length; i++) {
@@ -226,8 +243,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 if (!((fechaNacimiento>1799)&&(fechaNacimiento<1850))) {
                     conteTabla.getElementsByTagName('tr')[i+1].classList.add('oculta');
                 } else {
-                    conteTabla.getElementsByTagName('tr')[i+1].classList.remove('oculta');        
-                } 
+                    conteTabla.getElementsByTagName('tr')[i+1].classList.remove('oculta');
+                }
             }
         } else if (valorNacimiento=='value3'){
             for (let i=0; i<json.tpespecial.length; i++) {
@@ -235,8 +252,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 if (!((fechaNacimiento>1849)&&(fechaNacimiento<1900))) {
                     conteTabla.getElementsByTagName('tr')[i+1].classList.add('oculta');
                 } else {
-                    conteTabla.getElementsByTagName('tr')[i+1].classList.remove('oculta');        
-                } 
+                    conteTabla.getElementsByTagName('tr')[i+1].classList.remove('oculta');
+                }
             }
         } else if (valorNacimiento=='value4'){
             for (let i=0; i<json.tpespecial.length; i++) {
@@ -244,8 +261,8 @@ document.addEventListener("DOMContentLoaded", function(){
                 if (!((fechaNacimiento>1899)&&(fechaNacimiento<1950))) {
                     conteTabla.getElementsByTagName('tr')[i+1].classList.add('oculta');
                 } else {
-                    conteTabla.getElementsByTagName('tr')[i+1].classList.remove('oculta');        
-                } 
+                    conteTabla.getElementsByTagName('tr')[i+1].classList.remove('oculta');
+                }
             }
         } else if (valorNacimiento=='value5'){
             for (let i=0; i<json.tpespecial.length; i++) {
@@ -253,9 +270,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 if (!(fechaNacimiento>1949)) {
                     conteTabla.getElementsByTagName('tr')[i+1].classList.add('oculta');
                 } else {
-                    conteTabla.getElementsByTagName('tr')[i+1].classList.remove('oculta');        
-                } 
-            } 
+                    conteTabla.getElementsByTagName('tr')[i+1].classList.remove('oculta');
+                }
+            }
         } else if (valorNacimiento == 'value6') {
             mostrarTabCompleta(json, conteTabla);
         }
@@ -272,7 +289,7 @@ document.addEventListener("DOMContentLoaded", function(){
             if (json.tpespecial[i].thing.actividad ==='Política') {
                 conteTabla.getElementsByTagName('tr')[i+1].classList.add('politica');
             }
-        } 
+        }
         for (let i=0; i<json.tpespecial.length; i++) {
             if (json.tpespecial[i].thing.actividad ==='Deportiva') {
                 conteTabla.getElementsByTagName('tr')[i+1].classList.add('deportiva');
