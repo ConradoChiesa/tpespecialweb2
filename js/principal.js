@@ -68,35 +68,6 @@ document.addEventListener("DOMContentLoaded", function(){
         .then(json => armarTabla(json))
         .catch(error => 'Problema en la operación '+error)
     }
-
-    function armarTabla(json) {
-        let conteTabla = document.getElementById('divTab');
-        let html = '<table>';
-        html += '<h2 class="argentinos">Personajes argentinos</h2>'
-        html += '<thead><th>Personaje</th><th>Nacimiento<br><select id="filtro"><option value="value1">1750-1799</option>';
-        html += '<option value="value2" selected>1800-1849</option><option value="value3">1850-1899</option>';
-        html += '<option value="value4">1900-1949</option><option value="value5">1950-2000</option>';
-        html += '<option value="value6" selected>Ver Todos</option></select><td>Actividad</th></thead>';
-        for (let i=0; i<json.tpespecial.length; i++) {
-            let personaje = json.tpespecial[i].thing.personaje;
-            let nacimiento = json.tpespecial[i].thing.nacimiento;
-            let actividad = json.tpespecial[i].thing.actividad;
-            html+='<tr class="verde"><td>'+personaje+'</td><td>'+nacimiento+'</td><td>'+actividad+'</td>';
-            html+= '<td><button name="borrar">Borrar fila</button></td><td><button name="editar">Editar fila</button></td></tr>';
-        }
-        html += '</table><div id="mensaje"></div><div class="debajoDeTabla">';
-        html += '<input type="text" id="input-perso" placeholder="Personaje" value=""/>';
-        html += '<input type="text" id="input-naci" placeholder="Año nacimiento"  value=""/>';
-        html += '<select id="actividad"><option value="Artística">Artística</option>';
-        html += '<option value="Política" selected>Política</option><option value="Deportiva">Deportiva</option>';
-        html += '<option value="Científica">Científica</option><option value="Otra">Otra</option>';
-        html += '<option value="Sin definir" selected>Definir actividad</option></select>';
-        html += '<div class="div-botones"><button id="btn-enviar">Crear personaje</button>';
-        html += '<button id="btnCrear3Filas">Crear tres filas</button>';
-        html += '<button id="btn-mostrarTabComple">Mostrar tabla completa</button></div></div>';
-        conteTabla.innerHTML += html;
-        escucharEventosTabla(json, conteTabla);
-    }
    
     function escucharEventosTabla(json, conteTabla){
         document.getElementById('btn-enviar').addEventListener('click', crearFila);
@@ -267,12 +238,15 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
+        //En unas horas acomodo esta función en base a la explicación de Javier Dottori
     function filtrarActividad(json, conteTabla) {
         for (let i=0; i<json.tpespecial.length; i++) {
             if (json.tpespecial[i].thing.actividad ==='Política') {
                 conteTabla.getElementsByTagName('tr')[i+1].classList.add('politica');
             }
-        } 
+        }
+        
+        
         for (let i=0; i<json.tpespecial.length; i++) {
             if (json.tpespecial[i].thing.actividad ==='Deportiva') {
                 conteTabla.getElementsByTagName('tr')[i+1].classList.add('deportiva');
@@ -298,5 +272,35 @@ document.addEventListener("DOMContentLoaded", function(){
                 conteTabla.getElementsByTagName('tr')[i+1].classList.add('otra');
             }
         }
+    }
+
+    //Hay que modificar la tabla, tanto en contenido como en forma, en base a recomendación de javier Dottori
+    function armarTabla(json) {
+        let conteTabla = document.getElementById('divTab');
+        let html = '<table>';
+        html += '<h2 class="argentinos">Personajes argentinos</h2>'
+        html += '<thead><th>Personaje</th><th>Nacimiento<br><select id="filtro"><option value="value1">1750-1799</option>';
+        html += '<option value="value2" selected>1800-1849</option><option value="value3">1850-1899</option>';
+        html += '<option value="value4">1900-1949</option><option value="value5">1950-2000</option>';
+        html += '<option value="value6" selected>Ver Todos</option></select><td>Actividad</th></thead>';
+        for (let i=0; i<json.tpespecial.length; i++) {
+            let personaje = json.tpespecial[i].thing.personaje;
+            let nacimiento = json.tpespecial[i].thing.nacimiento;
+            let actividad = json.tpespecial[i].thing.actividad;
+            html+='<tr class="verde"><td>'+personaje+'</td><td>'+nacimiento+'</td><td>'+actividad+'</td>';
+            html+= '<td><button name="borrar">Borrar fila</button></td><td><button name="editar">Editar fila</button></td></tr>';
+        }
+        html += '</table><div id="mensaje"></div><div class="debajoDeTabla">';
+        html += '<input type="text" id="input-perso" placeholder="Personaje" value=""/>';
+        html += '<input type="text" id="input-naci" placeholder="Año nacimiento"  value=""/>';
+        html += '<select id="actividad"><option value="Artística">Artística</option>';
+        html += '<option value="Política" selected>Política</option><option value="Deportiva">Deportiva</option>';
+        html += '<option value="Científica">Científica</option><option value="Otra">Otra</option>';
+        html += '<option value="Sin definir" selected>Definir actividad</option></select>';
+        html += '<div class="div-botones"><button id="btn-enviar">Crear personaje</button>';
+        html += '<button id="btnCrear3Filas">Crear tres filas</button>';
+        html += '<button id="btn-mostrarTabComple">Mostrar tabla completa</button></div></div>';
+        conteTabla.innerHTML += html;
+        escucharEventosTabla(json, conteTabla);
     }
 });
