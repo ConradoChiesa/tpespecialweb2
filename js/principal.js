@@ -4,8 +4,9 @@
 
     document.querySelectorAll(".link-barra").forEach(function(li) {
       li.addEventListener('click', f => cargar(li.dataset.url));
+      cargarPortada();
     })
-
+    let container = document.querySelector(".container-float");
     let main = document.getElementById('main');
     let server = 'http://web-unicen.herokuapp.com/api/groups/';
     let url = server+'PocaiMatias82/tpespecial/';
@@ -15,57 +16,64 @@
     // document.getElementsByClassName('link-barra')[1].addEventListener('click', cargarContacto);
     // document.getElementsByClassName('link-barra')[2].addEventListener('click', cargarTabla);
 
-    //Funcion agregada por Conrado
+    //Funcion agregada por Conrado para partialRender
     function cargar(url) {
       fetch(url).then(
         function (response) {
           response.text().then(url => {
-            document.querySelector(".container-float").innerHTML = url;
-
+            container.innerHTML = url;
+            linkshome();
+            cargarTabla();
           })
         })
-        }
-
+      }
+      function linkshome() {
+        document.querySelectorAll(".imagenprincipal").forEach(function(imagen) {
+          imagen.addEventListener('click', event =>
+          cargar(imagen.dataset.url)
+          );
+        });
+      }
     function cargarPortada() {
         fetch('htmls/portada.html')
         .then(r => r.text())
-        .then(html => {main.innerHTML = html; escucharNoticias();})
-        .catch(error => main.innerHTML= 'Problema en el proceso '+error)
+        .then(html => {container.innerHTML = html; linkshome();})
+        .catch(error => main.innerHTML= 'Problema en el proceso '+ error)
     }
 
-    function escucharNoticias() {
-        document.querySelector('.articulo-uno').addEventListener('click', function(){
-            fetch('htmls/mafalda.html')
-            .then(r => r.text())
-            .then(html => main.innerHTML = html)
-            .catch(error => main.innerHTML = 'Problema en el proceso '+error)
-        });
-        document.querySelector('.articulo-dos').addEventListener('click', function(){
-            fetch('htmls/chapulin.html')
-            .then(r => r.text())
-            .then(html => main.innerHTML = html)
-            .catch(error => main.innerHTML = 'Problema en el proceso '+error)
-        });
-        document.querySelector('.articulo-tres').addEventListener('click', function(){
-            fetch('htmls/sandokan.html')
-            .then(r => r.text())
-            .then(html => main.innerHTML = html)
-            .catch(error => main.innerHTML = 'Problema en el proceso '+error)
-        });
-        document.querySelector('.articulo-cuatro').addEventListener('click', function(){
-            fetch('htmls/superagente.html')
-            .then(r => r.text())
-            .then(html => main.innerHTML = html)
-            .catch(error => main.innerHTML = 'Problema en el proceso '+error)
-        });
-    }
+    // function escucharNoticias() {
+    //     document.querySelector('.articulo-uno').addEventListener('click', function(){
+    //         fetch('htmls/mafalda.html')
+    //         .then(r => r.text())
+    //         .then(html => main.innerHTML = html)
+    //         .catch(error => main.innerHTML = 'Problema en el proceso '+error)
+    //     });
+    //     document.querySelector('.articulo-dos').addEventListener('click', function(){
+    //         fetch('htmls/chapulin.html')
+    //         .then(r => r.text())
+    //         .then(html => main.innerHTML = html)
+    //         .catch(error => main.innerHTML = 'Problema en el proceso '+error)
+    //     });
+    //     document.querySelector('.articulo-tres').addEventListener('click', function(){
+    //         fetch('htmls/sandokan.html')
+    //         .then(r => r.text())
+    //         .then(html => main.innerHTML = html)
+    //         .catch(error => main.innerHTML = 'Problema en el proceso '+error)
+    //     });
+    //     document.querySelector('.articulo-cuatro').addEventListener('click', function(){
+    //         fetch('htmls/superagente.html')
+    //         .then(r => r.text())
+    //         .then(html => main.innerHTML = html)
+    //         .catch(error => main.innerHTML = 'Problema en el proceso '+error)
+    //     });
+    // }
 
-    function cargarContacto() {
-        fetch('htmls/contacto.html')
-        .then(r => r.text())
-        .then(html => main.innerHTML = html)
-        .catch(error => main.innerHTML = 'Problema en el proceso '+error)
-    }
+    // function cargarContacto() {
+    //     fetch('htmls/contacto.html')
+    //     .then(r => r.text())
+    //     .then(html => main.innerHTML = html)
+    //     .catch(error => main.innerHTML = 'Problema en el proceso '+error)
+    // }
 
     function cargarTabla() {
         cargarDivTabla();
@@ -88,12 +96,8 @@
 
     function armarTabla(json) {
         let conteTabla = document.getElementById('divTab');
-        let html = '<table>';
-        html += '<h2 class="argentinos">Personajes argentinos</h2>'
-        html += '<thead><th>Personaje</th><th>Nacimiento<br><select id="filtro"><option value="value1">1750-1799</option>';
-        html += '<option value="value2" selected>1800-1849</option><option value="value3">1850-1899</option>';
-        html += '<option value="value4">1900-1949</option><option value="value5">1950-2000</option>';
-        html += '<option value="value6" selected>Ver Todos</option></select><td>Actividad</th></thead>';
+        let html = document.getElementById('tbody');
+
         for (let i=0; i<json.tpespecial.length; i++) {
             let personaje = json.tpespecial[i].thing.personaje;
             let nacimiento = json.tpespecial[i].thing.nacimiento;
@@ -101,16 +105,7 @@
             html+='<tr class="verde"><td>'+personaje+'</td><td>'+nacimiento+'</td><td>'+actividad+'</td>';
             html+= '<td><button name="borrar">Borrar fila</button></td><td><button name="editar">Editar fila</button></td></tr>';
         }
-        html += '</table><div id="mensaje"></div><div class="debajoDeTabla">';
-        html += '<input type="text" id="input-perso" placeholder="Personaje" value=""/>';
-        html += '<input type="text" id="input-naci" placeholder="Año nacimiento"  value=""/>';
-        html += '<select id="actividad"><option value="Artística">Artística</option>';
-        html += '<option value="Política" selected>Política</option><option value="Deportiva">Deportiva</option>';
-        html += '<option value="Científica">Científica</option><option value="Otra">Otra</option>';
-        html += '<option value="Sin definir" selected>Definir actividad</option></select>';
-        html += '<div class="div-botones"><button id="btn-enviar">Crear personaje</button>';
-        html += '<button id="btnCrear3Filas">Crear tres filas</button>';
-        html += '<button id="btn-mostrarTabComple">Mostrar tabla completa</button></div></div>';
+
         conteTabla.innerHTML += html;
         escucharEventosTabla(json, conteTabla);
     }

@@ -1,6 +1,38 @@
-    
-    
-    <div id="divTab">
-        
+<table>
+  <h2 class="argentinos">Personajes argentinos</h2>
+  <thead>
+    <th>Personaje</th>
+    <th>Nacimiento</th><br>
+      <select id="filtro">
+        <option value="value1">1750-1799</option>
+        <option value="value2" selected>1800-1849</option>
+        <option value="value3">1850-1899</option>
+        <option value="value4">1900-1949</option>
+        <option value="value5">1950-2000</option>
+        <option value="value6" selected>Ver Todos</option>
+      </select>
+      <th>Actividad</th></thead>
+      <tbody id="tbody">
+
+      </tbody>
+    </table>
+    <div id="mensaje"></div>
+    <div class="debajoDeTabla">
+      <input type="text" id="input-perso" placeholder="Personaje" value=""/>
+      <input type="text" id="input-naci" placeholder="Año nacimiento"  value=""/>
+      <select id="actividad">
+        <option value="Artística">Artística</option>
+        <option value="Política" selected>Política</option>
+        <option value="Deportiva">Deportiva</option>
+        <option value="Científica">Científica</option>
+        <option value="Otra">Otra</option>
+        <option value="Sin definir" selected>Definir actividad</option>
+      </select>
+      <div class="div-botones"><button id="btn-enviar">Crear personaje</button>
+        <button id="btnCrear3Filas">Crear tres filas</button>
+        <button id="btn-mostrarTabComple">Mostrar tabla completa</button>
+      </div>
     </div>
-   
+    <div id="divTab">
+
+    </div>
