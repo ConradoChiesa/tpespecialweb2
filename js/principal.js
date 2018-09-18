@@ -22,12 +22,12 @@
         function (response) {
           response.text().then(url => {
             container.innerHTML = url;
-            linkshome();
+            linksPortada();
             cargarTabla();
           })
         })
       }
-      function linkshome() {
+      function linksPortada() {
         document.querySelectorAll(".imagenprincipal").forEach(function(imagen) {
           imagen.addEventListener('click', event =>
           cargar(imagen.dataset.url)
@@ -80,12 +80,12 @@
         bajarObjeto();
     }
 
-    function cargarDivTabla() {
-        fetch('htmls/tabla.html')
-        .then(r => r.text())
-        .then(html => main.innerHTML = html)
-        .catch(error => error)
-    }
+    // function cargarDivTabla() {
+    //     fetch('htmls/tabla.html')
+    //     .then(r => r.text())
+    //     .then(html => main.innerHTML = html)
+    //     .catch(error => error)
+    // }
 
     function bajarObjeto() {
         fetch(url)
