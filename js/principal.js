@@ -1,5 +1,5 @@
 'use strict';
-
+//document add event listenerrrrrrrr
   document.addEventListener('DOMContentLoaded', function (){
 
     document.querySelectorAll(".link-barra").forEach(function(li) {
