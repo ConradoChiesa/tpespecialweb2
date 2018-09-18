@@ -272,31 +272,29 @@ document.addEventListener("DOMContentLoaded", function(){
             if (json.tpespecial[i].thing.actividad ==='Política') {
                 conteTabla.getElementsByTagName('tr')[i+1].classList.add('amarillo');
             }
-        } 
-        for (let i=0; i<json.tpespecial.length; i++) {
+        
             if (json.tpespecial[i].thing.actividad ==='Deportiva') {
                 conteTabla.getElementsByTagName('tr')[i+1].classList.add('verde');
             }
-        }
-        for (let i=0; i<json.tpespecial.length; i++) {
+        
             if (json.tpespecial[i].thing.actividad ==='Científica') {
                 conteTabla.getElementsByTagName('tr')[i+1].classList.add('rosa');
             }
-        }
-        for (let i=0; i<json.tpespecial.length; i++) {
+       
             if (json.tpespecial[i].thing.actividad ==='Artística') {
                 conteTabla.getElementsByTagName('tr')[i+1].classList.add('celeste');
             }
-        }
-        for (let i=0; i<json.tpespecial.length; i++) {
+        
+       
             if (json.tpespecial[i].thing.actividad ==='Otra') {
                 conteTabla.getElementsByTagName('tr')[i+1].classList.add('gris');
             }
+        
         }
-        for (let i=0; i<json.tpespecial.length; i++) {
+
             if (json.tpespecial[i].thing.actividad ==='Sin definir') {
                 conteTabla.getElementsByTagName('tr')[i+1].classList.add('gris');
             }
-        }
     }
+    
 });
