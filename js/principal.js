@@ -18,26 +18,25 @@
 
     //Funcion agregada por Conrado para partialRender
     function cargar(url) {
-      fetch(url).then(
-        function (response) {
-          response.text().then(url => {
-            container.innerHTML = url;
-            linksPortada();
-            cargarTabla();
-          })
-        })
+      fetch(url)
+        .then(r => r.text())
+          .then(url => container.innerHTML = url)
+          .then(linksPortada, cargarTabla );
       }
       function linksPortada() {
-        document.querySelectorAll(".imagenprincipal").forEach(function(imagen) {
-          imagen.addEventListener('click', event =>
-          cargar(imagen.dataset.url)
-          );
-        });
+        let img = document.querySelectorAll(".imagenprincipal");
+          if (img) {
+            img.forEach(function(imagen) {
+            imagen.addEventListener('click', event =>
+            cargar(imagen.dataset.url));
+          });
+        }
       }
     function cargarPortada() {
         fetch('htmls/portada.html')
         .then(r => r.text())
-        .then(html => {container.innerHTML = html; linkshome();})
+        .then(html => {container.innerHTML = html;
+          linksPortada();})
         .catch(error => main.innerHTML= 'Problema en el proceso '+ error)
     }
 
