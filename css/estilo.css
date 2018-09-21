@@ -1,5 +1,5 @@
-body {
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Sans', sans-serif;
+* {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 h1 {
@@ -12,6 +12,7 @@ h1 {
 
 h2 {
 		text-align: center;
+		font-size: 2rem;
 		color: darkmagenta; 
 	}
 
@@ -77,20 +78,6 @@ p {
 	padding-top: 0;
 }
 
-.contenedor-form {
-	text-align: center;
-}
-
-.contenedor-form p {
-	text-align: center;
-}
-
-.contenedor-form input, .contenedor-form textarea {
-	display: block;
-	margin: 0 auto;
-	margin-bottom: 1%;
-}
-
 td, th {
 	border: 1px solid;
 }
@@ -99,13 +86,12 @@ input {
 	width: 100px;
 }
 
-table {
-	margin: 0 auto;
+form {
+	display: block;
 }
 
-button {
-	border-radius: 5px;
-	padding: 7px;
+table {
+	margin: 0 auto;
 }
 
 .debajoDeTabla {
@@ -114,9 +100,9 @@ button {
 }
 
 .debajoDeTabla button {
+	padding: 0.3rem;
 	margin-top: 0.3rem;
 	margin-bottom: 0.2rem;
-	font-size: 1rem;
 }
 
 footer {
@@ -206,12 +192,6 @@ h5 {
 	td, th, button {
 	border: 1px solid;
 	font-size: 0.7rem;
-}
-
-.debajoDeTabla button {
-	margin-top: 0.3rem;
-	margin-bottom: 0.2rem;
-	font-size: 0.8rem;
 }
 
 	footer {
@@ -332,19 +312,23 @@ h5 {
 	display: none;
 }
 
-.deportiva {
+.azul {
+	color: blue;
+}
+
+.verde {
 	background-color:  #73d057; 
 }
 
-.politica {
+.amarillo {
 	background-color: #e1dd5a;
 }
-.cientifica {
+.rosa {
 	background-color: rosybrown;
 }
-.artistica {
+.celeste {
 	background-color:  #afd0d6;
 }
-.otra {
+.gris {
 	background-color:  #d3d3d3;
 }
