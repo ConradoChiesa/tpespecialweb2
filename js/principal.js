@@ -10,18 +10,13 @@
     let main = document.getElementById('main');
     let server = 'http://web-unicen.herokuapp.com/api/groups/';
     let url = server+'PocaiMatias82/tpespecial/';
-    // document.addEventListener("DOMContentLoaded", function(){
-    // cargarPortada();
-    // document.getElementsByClassName('link-barra')[0].addEventListener('click', cargarPortada);
-    // document.getElementsByClassName('link-barra')[1].addEventListener('click', cargarContacto);
-    // document.getElementsByClassName('link-barra')[2].addEventListener('click', cargarTabla);
 
     //Funcion agregada por Conrado para partialRender
     function cargar(url) {
       fetch(url)
         .then(r => r.text())
-          .then(url => container.innerHTML = url)
-          .then(linksPortada, cargarTabla );
+        .then(url => container.innerHTML = url)
+        .then(linksPortada, cargarTabla );
       }
       function linksPortada() {
         let img = document.querySelectorAll(".imagenprincipal");
@@ -36,44 +31,10 @@
         fetch('htmls/portada.html')
         .then(r => r.text())
         .then(html => {container.innerHTML = html;
-          linksPortada();})
+          linksPortada();
+        })
         .catch(error => main.innerHTML= 'Problema en el proceso '+ error)
     }
-
-    // function escucharNoticias() {
-    //     document.querySelector('.articulo-uno').addEventListener('click', function(){
-    //         fetch('htmls/mafalda.html')
-    //         .then(r => r.text())
-    //         .then(html => main.innerHTML = html)
-    //         .catch(error => main.innerHTML = 'Problema en el proceso '+error)
-    //     });
-    //     document.querySelector('.articulo-dos').addEventListener('click', function(){
-    //         fetch('htmls/chapulin.html')
-    //         .then(r => r.text())
-    //         .then(html => main.innerHTML = html)
-    //         .catch(error => main.innerHTML = 'Problema en el proceso '+error)
-    //     });
-    //     document.querySelector('.articulo-tres').addEventListener('click', function(){
-    //         fetch('htmls/sandokan.html')
-    //         .then(r => r.text())
-    //         .then(html => main.innerHTML = html)
-    //         .catch(error => main.innerHTML = 'Problema en el proceso '+error)
-    //     });
-    //     document.querySelector('.articulo-cuatro').addEventListener('click', function(){
-    //         fetch('htmls/superagente.html')
-    //         .then(r => r.text())
-    //         .then(html => main.innerHTML = html)
-    //         .catch(error => main.innerHTML = 'Problema en el proceso '+error)
-    //     });
-    // }
-
-    // function cargarContacto() {
-    //     fetch('htmls/contacto.html')
-    //     .then(r => r.text())
-    //     .then(html => main.innerHTML = html)
-    //     .catch(error => main.innerHTML = 'Problema en el proceso '+error)
-    // }
-
     function cargarTabla() {
         cargarDivTabla();
         bajarObjeto();
