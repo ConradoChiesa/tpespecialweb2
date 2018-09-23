@@ -1,8 +1,7 @@
 <?php
 
-
 require_once "config/ConfigApp.php";
-require_once "controller\TareasController.php";
+require_once "controller/TareasController.php";
 
 function parseURL($url)
 {
@@ -36,4 +35,5 @@ if(isset($_GET['action'])){
       echo $controller->Home();
     }
 }
+
  ?>
