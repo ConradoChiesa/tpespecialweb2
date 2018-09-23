@@ -8,12 +8,19 @@ document.addEventListener('DOMContentLoaded', function (){
     })
     let container = document.querySelector(".container-float");
     let main = document.getElementById('main');
+<<<<<<< HEAD
         
+=======
+    let server = 'http://web-unicen.herokuapp.com/api/groups/';
+    let url = server+'PocaiMatias82/tpespecial/';
+
+    //Funcion agregada por Conrado para partialRender
+>>>>>>> e1677443c215b8b698a8cdb1c460ffc187b81aa8
     function cargar(url) {
       fetch(url)
         .then(r => r.text())
-          .then(url => container.innerHTML = url)
-          .then(linksPortada, cargarTabla );
+        .then(url => container.innerHTML = url)
+        .then(linksPortada, cargarTabla );
       }
       function linksPortada() {
         let img = document.querySelectorAll(".imagenprincipal");
@@ -28,10 +35,14 @@ document.addEventListener('DOMContentLoaded', function (){
         fetch('htmls/portada.html')
         .then(r => r.text())
         .then(html => {container.innerHTML = html;
-          linksPortada();})
+          linksPortada();
+        })
         .catch(error => main.innerHTML= 'Problema en el proceso '+ error)
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e1677443c215b8b698a8cdb1c460ffc187b81aa8
     function cargarTabla() {
         cargarDivTabla();
         bajarObjeto();
