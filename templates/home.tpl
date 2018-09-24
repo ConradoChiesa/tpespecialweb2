@@ -19,7 +19,7 @@
     </div>
 
      <div class="container">
-      <h2>Crear personaje</h2>
+      <h3>Crear personaje</h3>
       <form method="post" action="agregar">
         <div class="form-group">
           <label for="nombreForm">Nombre</label>
