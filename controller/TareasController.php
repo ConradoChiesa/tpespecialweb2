@@ -6,7 +6,6 @@ class TareasController
 {
   private $view;
   private $model;
-  private $Titulo;
 
   function __construct()
   {
@@ -16,24 +15,31 @@ class TareasController
   }
 
   function Home(){
-      $Tareas = $this->model->GetTareas();
-      $this->view->Mostrar($this->Titulo, $Tareas);
+      $Personajes = $this->model->GetTareas();
+      $Hechos = $this->model->GetHechos();
+      $this->view->Mostrar($Personajes,$Hechos);
   }
 
   function InsertTarea(){
-    $titulo = $_POST["tituloForm"];
-    $descripcion = $_POST["descripcionForm"];
+    $nombre = $_POST["nombreForm"];
+    $nacimiento = $_POST["nacimientoForm"];
+    $actividad = $_POST["actividadForm"];
 
-    if(isset($_POST["completadaForm"])){
-      $completada = 1;
-    }else{
-      $completada = 0;
-    }
-
-    $this->model->InsertarTarea($titulo,$descripcion,$completada);
+    $this->model->InsertarTarea($nombre,$nacimiento,$actividad);
 
     header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
   }
+
+  function InsertHecho(){
+      $hecho = $_POST["hechoForm"];
+      $perso = $_POST["persoHechoForm"];
+
+      $this->model->InsertarHecho($perso,$hecho);
+
+      header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+    }
+
+
 
   function BorrarTarea($param){
     $this->model->BorrarTarea($param[0]);

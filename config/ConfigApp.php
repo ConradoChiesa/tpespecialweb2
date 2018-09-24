@@ -9,7 +9,6 @@ class ConfigApp
       'home'=> 'TareasController#Home',
       'javito'=> 'TareasController#Home',
       'borrar'=> 'TareasController#BorrarTarea',
-      'completada'=> 'TareasController#CompletarTarea'
     ];
 
 }

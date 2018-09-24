@@ -1,7 +1,6 @@
 <?php
-/**
- *
- */
+
+
 class TareasModel
 {
   private $db;
@@ -13,22 +12,37 @@ class TareasModel
 
   function Connect(){
     return new PDO('mysql:host=localhost;'
-    .'dbname=tareas;charset=utf8'
+    .'dbname=db_personajes;charset=utf8'
     , 'root', '');
   }
 
   function GetTareas(){
 
-      $sentencia = $this->db->prepare( "select * from tarea");
+      $sentencia = $this->db->prepare( "select * from personaje");
       $sentencia->execute();
       return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function InsertarTarea($titulo,$descripcion,$completada){
+  function GetHechos(){
 
-    $sentencia = $this->db->prepare("INSERT INTO tarea(titulo, descripcion, completada) VALUES(?,?,?)");
-    $sentencia->execute(array($titulo,$descripcion,$completada));
+      $sentencia = $this->db->prepare( "select * from hechos");
+      $sentencia->execute();
+      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  function InsertarTarea($nombre,$nacimiento,$actividad){
+
+    $sentencia = $this->db->prepare("INSERT INTO personaje(nombre, nacimiento, actividad) VALUES(?,?,?)");
+    $sentencia->execute(array($nombre,$nacimiento,$actividad));
+  }
+
+  function InsertarHecho($perso,$hecho){
+
+    $sentencia = $this->db->prepare("INSERT INTO hechos(id_personaje, hecho) VALUES(?,?)");
+    $sentencia->execute(array($perso,$hecho));
+  }
+
+
 
   function BorrarTarea($idTarea){
 
@@ -36,11 +50,6 @@ class TareasModel
     $sentencia->execute(array($idTarea));
   }
 
-  function CompletarTarea($id_tarea){
-
-    $sentencia = $this->db->prepare( "update tarea set completada=1 where id=?");
-    $sentencia->execute(array($id_tarea));
-  }
 }
 
 

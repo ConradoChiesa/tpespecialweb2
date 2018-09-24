@@ -15,8 +15,8 @@ if ($partesURL[0] == '') {
 }else {
   if ($partesURL[0] == 'agregar') {
     $controller->InsertTarea();
-  }elseif ($partesURL[0] == 'borrar') {
-    $controller->BorrarTarea($partesURL[1]);
+  }elseif ($partesURL[0] == 'agregarHecho') {
+    $controller->InsertHecho();
   }elseif ($partesURL[0] == 'completada') {
       $controller->CompletarTarea($partesURL[1]);
   }
