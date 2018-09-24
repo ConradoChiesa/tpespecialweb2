@@ -1,9 +1,9 @@
 <?php
 
-
-
 require_once "config/ConfigApp.php";
-require_once "controller/personajesController.php";
+require_once "controller/TareasController.php";
+
+
 
 function parseURL($url)
 {
@@ -15,6 +15,7 @@ function parseURL($url)
   return $arrayReturn;
 }
 
+
 if(isset($_GET['action'])){
    #$urlData[ACTION] = borrar
    #$urlData[PARAMS] = [1,2,3,4]
@@ -23,7 +24,7 @@ if(isset($_GET['action'])){
     $action = $urlData[ConfigApp::$ACTION]; //home
     if(array_key_exists($action,ConfigApp::$ACTIONS)){
         $params = $urlData[ConfigApp::$PARAMS];
-        $action = explode('#',ConfigApp::$ACTIONS[$action]); //Array[0] -> personajesController [1] -> Borrarpersonaje
+        $action = explode('#',ConfigApp::$ACTIONS[$action]); //Array[0] -> TareasController [1] -> BorrarTarea
         $controller =  new $action[0]();
         $metodo = $action[1];
         if(isset($params) &&  $params != null){
@@ -33,31 +34,8 @@ if(isset($_GET['action'])){
             echo $controller->$metodo();
         }
     }else{
-      $controller =  new personajesController();
+      $controller =  new TareasController();
       echo $controller->Home();
     }
 }
-
-require_once "controller\TareasController.php";
-
-#[borrar][1]
-#completada/2
-#agregar
-
-$controller = new TareasController();
-$partesURL = explode('/', $_GET['action']);
-
-if ($partesURL[0] == '') {
-  $controller->Home();
-}else {
-  if ($partesURL[0] == 'agregar') {
-    $controller->InsertTarea();
-  }elseif ($partesURL[0] == 'agregarHecho') {
-    $controller->InsertHecho();
-  }elseif ($partesURL[0] == 'completada') {
-      $controller->CompletarTarea($partesURL[1]);
-  }
-}
-
-
  ?>
