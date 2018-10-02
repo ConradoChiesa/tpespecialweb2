@@ -1,3 +1,5 @@
+{include file="nav.tpl"}
+{include file="header.tpl"}
 <h2>Contacto</h2>
 <div class="contenedor-form">
 	<p>Escribí a “Personajes Notables”.</p>
@@ -12,5 +14,4 @@
 		<button>Enviar</button>
 	</form>
 </div>
-
-
+{include file="footer.tpl"}

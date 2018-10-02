@@ -1,3 +1,4 @@
+
 <h2>Mafalda</h2>
 
 <img class="img-notas" src="images/mafalda04.jpg" alt="Mafalda pensando en una hamaca"/>

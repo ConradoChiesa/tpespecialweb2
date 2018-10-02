@@ -1,8 +1,8 @@
 <?php
 require_once  "./view/personajesView.php";
 require_once  "./model/personajesModel.php";
-
-class personajesController
+require_once  "SecuredController.php";
+class personajesController extends SecuredController
 {
   private $view;
   private $model;
@@ -12,8 +12,13 @@ class personajesController
   {
     $this->view = new personajesView();
     $this->model = new personajesModel();
-    $this->Titulo = "Lista de personajes Controlador 1";
+    $this->Titulo = "Heroes y Heroinas";
   }
+
+  // function Portada()
+  // {
+  //       header(home);
+  // }
 
   function Home(){
       $personajes = $this->model->Getpersonajes();
