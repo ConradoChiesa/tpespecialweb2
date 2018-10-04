@@ -13,6 +13,8 @@
     </article>
     <article class="articulo-cuatro">
         <h2>El Superagente 86</h2>
+        <a href="superagente">
         <img class="imagenprincipal" src="images/agente03.jpg" data-url="htmls/superagente.html" alt="El Superagente 86 junto a 91, el Jefe de Control y Siegfried"/>
+        </a>
     </article>
 </div>

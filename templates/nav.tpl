@@ -3,9 +3,6 @@
         <li class="item-barra" >
           <a id="inicio" href="home" class="link-barra" data-url="template/portada.tpl">Inicio</a>
         </li>
-        <li class="item-barra" >
-          <a class="link-barra" href="contacto" data-url="contacto.html">Contacto</a>
-        </li>
         <li class="item-barra">
           <a id="tabla" class="link-barra" data-url="htmls/tabla.html">Tabla</a>
         </li>

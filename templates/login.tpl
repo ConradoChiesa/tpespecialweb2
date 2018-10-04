@@ -1,4 +1,4 @@
-{include file="nav.tpl"}
+ {include file="nav.tpl"}
 {include file="header.tpl"}
     <form method="post" action="verificarLogin">
       <div class="form-group">
