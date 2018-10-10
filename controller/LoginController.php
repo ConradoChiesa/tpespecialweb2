@@ -17,40 +17,40 @@ class LoginController extends SecuredController
     $this->Titulo = "Login";
   }
 
-  function login(){
-
+  function login() {
     $this->view->mostrarLogin();
-
   }
 
-  function logout(){
+  function logout() {
     session_start();
     session_destroy();
     header(LOGIN);
   }
 
-  function verificarLogin(){
+  function verificarLogin() {
       $usuario = $_POST["usuarioId"];
       $pass = $_POST["passwordId"];
-      $dbUser = $this->model->getUser($usuario);
+      $dbUser = $this->model->getUsuario($usuario);
+      if(isset($dbUser) && sizeof($dbUser) > 0) {
+          if (password_verify($pass, $dbUser[0]["password"])) {
+            session_start();
+            $_SESSION["User"] = $usuario;
+            var_dump($dbUser[0]["esadmin"]);
+            if (($dbUser[0]["esadmin"]) == 1) {
+              header(HOMEADMIN);
+            } else {
+              header(HOMEUSER);
+            }
 
-      if(isset($dbUser) && sizeof($dbUser) > 0){
-          if (password_verify($pass, $dbUser[0]["password"])){
-              //mostrar lista de tareas
-              session_start();
-              $_SESSION["User"] = $usuario;
-              header(HOME);
-          }else{
+              // header(HOME);
+          } else {
             $this->view->mostrarLogin("Contraseña incorrecta");
-
           }
-      }else{
+      } else {
         //No existe el usario
         $this->view->mostrarLogin("No existe el usario");
       }
-
   }
-
 }
 
  ?>

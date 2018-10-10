@@ -19,7 +19,7 @@ class RegisterController {
     if ($_SERVER['REQUEST_METHOD'] == 'GET' ) {
       //GET formulario de registro
       $this->view->mostrarRegistro();
-    }else{
+    } else {
       //POST formulario. datos: nombre, user, email, password
       $nombre = $_POST["nombre"];
       $usuario = $_POST["usuario"];
@@ -30,14 +30,11 @@ class RegisterController {
         $password = password_hash($password, PASSWORD_DEFAULT);
         $this->model->InsertarUsuario($nombre, $usuario, $email, $password);
         header(LOGIN);
-      }else{
+      } else {
         $this->view->mostrarRegistro("Passwor incorrecto");
       }
     }
-
   }
-
-
 }
 
  ?>

@@ -1,47 +1,79 @@
 <?php
-/**
- *
- */
+
+
 class personajesModel
 {
   private $db;
 
-  function __construct()
-  {
+  function __construct() {
     $this->db = $this->Connect();
   }
 
-  function Connect(){
+  function Connect() {
     return new PDO('mysql:host=localhost;'
-    .'dbname=personajes;charset=utf8'
+    .'dbname=db_personajes;charset=utf8'
     , 'root', '');
   }
 
-  function Getpersonajes(){
+  function GetHecho($id) {
+    //select hecho from hechos where id_hecho=35
+    $sentencia = $this->db->prepare("select * from hechos where id_hecho=?");
+    $sentencia->execute(array("$id"));
+    $resultado = $sentencia->fetchColumn(2);
+    return $resultado;
+  }
 
-      $sentencia = $this->db->prepare( "select * from personaje");
+  function GetHechos() {
+      $sentencia = $this->db->prepare("select * from hechos
+        inner join personaje
+        on hechos.id_personaje = personaje.id_personaje");
       $sentencia->execute();
       return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function Insertarpersonaje($titulo,$descripcion,$completada){
-
-    $sentencia = $this->db->prepare("INSERT INTO personaje(titulo, descripcion, completada) VALUES(?,?,?)");
-    $sentencia->execute(array($titulo,$descripcion,$completada));
+  function GetPersonajes() {
+      $sentencia = $this->db->prepare("select * from personaje");
+      $sentencia->execute();
+      return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function Borrarpersonaje($idpersonaje){
-
-    $sentencia = $this->db->prepare( "delete from personaje where id=?");
-    $sentencia->execute(array($idpersonaje));
+  function GetPersonaje($id) {
+      $sentencia = $this->db->prepare("select * from personaje where id_personaje=?");
+      $sentencia->execute(array("$id"));
+      //$resultado = $sentencia->fetchColumn(2);
+      return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 
-  function Completarpersonaje($id_personaje){
+  function EliminarHecho($id) {
+    $sentencia = $this->db->prepare("DELETE FROM hechos WHERE id_hecho=?");
+    $sentencia->execute(array("$id"));
+    }
 
-    $sentencia = $this->db->prepare( "update personaje set completada=1 where id=?");
-    $sentencia->execute(array($id_personaje));
+  function InsertarTarea($nombre,$nacimiento,$actividad) {
+    $sentencia = $this->db->prepare("INSERT INTO personaje(nombre, nacimiento, actividad) VALUES(?,?,?)");
+    $sentencia->execute(array($nombre,$nacimiento,$actividad));
   }
+
+  function InsertarHecho($perso,$hecho) {
+    $sentencia = $this->db->prepare("INSERT INTO hechos(id_personaje, hecho) VALUES(?,?)");
+    $sentencia->execute(array($perso,$hecho));
+  }
+
+  function EliminarPersonaje($id) {
+    $sentencia = $this->db->prepare("DELETE FROM personaje WHERE id_personaje=?");
+    $sentencia->execute(array("$id"));
+  }
+
+  function ActualizarHecho($Hecho,$Id) {
+    $sentencia = $this->db->prepare("UPDATE hechos SET hecho=? WHERE id_hecho=?");
+    $sentencia->execute(array($Hecho,$Id));
+  }
+
+  function ActualizarPerso($nomPerso,$naciPerso,$actiPerso,$idPerso) {
+    $sentencia = $this->db->prepare("UPDATE personaje SET nombre = ?, nacimiento = ?, actividad = ? WHERE id_personaje = ?");
+    $sentencia->execute(array($nomPerso,$naciPerso,$actiPerso,$idPerso));
+  }
+
 }
-
 
  ?>

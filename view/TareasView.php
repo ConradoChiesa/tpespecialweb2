@@ -1,14 +1,20 @@
 <?php
-  require('libs/Smarty.class.php');
-class personajesView
+require('libs/Smarty.class.php');
+
+class TareasView
 {
-  function __construct() {
+  private $Smarty;
+
+  function __construct()
+  {
     $this->Smarty = new Smarty();
   }
 
-  function Mostrar($Personajes){
+  function Mostrar($Personajes,$Hechos){
     $this->Smarty->assign('Personajes',$Personajes);
+    $this->Smarty->assign('Hechos',$Hechos);
     $this->Smarty->display('templates/home.tpl');
+
   }
 
   function MostrarCrear($Personajes,$Hechos){
@@ -31,6 +37,10 @@ class personajesView
     $this->Smarty->display('templates/editarPersonaje.tpl');
   }
 
+  function Logearse(){
+      $this->Smarty->display('templates/login.tpl');
+    }
+
 }
 
- ?>
+ ?> 

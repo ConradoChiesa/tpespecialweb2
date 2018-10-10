@@ -3,6 +3,8 @@
 define('HOME', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
 define('LOGIN', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/login');
 define('LOGOUT', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]). '/logout');
+define('HOMEADMIN', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]. '/admin'));
+define('HOMEUSER', 'Location: http://'.$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]. '/homeuser'));
 
 class ConfigApp {
     public static $ACTION = 'action';
@@ -15,6 +17,21 @@ class ConfigApp {
       'login'=> 'LoginController#login',
       'registro'=> 'RegisterController#register',
       'verificarLogin'=> 'LoginController#verificarLogin',
+      'admin'=> 'LoginController#loginadmin',
+      'homeuser'=> 'personajesController#homeuser',
+      'logout'=> 'LoginController#logout',
+      'crear'=> 'personajesController#Crear',
+
+      'mostrarUsuarios'=> 'UsuarioController#MostrarUsuario',
+      'agregarPersonaje'=> 'TareasController#InsertPersonaje',
+      'agregarHecho'=> 'TareasController#InsertHecho',
+      'borrarHecho'=> 'TareasController#BorrarHecho',
+      'borrarPersonaje'=> 'TareasController#BorrarPersonaje',
+      'editarHecho'=> 'TareasController#EditarHecho',
+      'modificarHecho'=>'TareasController#ModificarHecho',
+      'editarPersonaje'=>'TareasController#EditarPersonaje',
+      'modificarPerso'=>'TareasController#ModificarPerso',
+      'guardarEditar'=> 'TareasController#GuardarEditarTarea',
     ];
 
 }

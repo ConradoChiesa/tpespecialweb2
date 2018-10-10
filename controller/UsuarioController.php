@@ -9,32 +9,24 @@ class UsuarioController extends SecuredController
   private $model;
   private $Titulo;
 
-  function __construct()
-  {
+  function __construct() {
     parent::__construct();
-
     $this->view = new UsuarioView();
     $this->model = new UsuarioModel();
     $this->Titulo = "Lista de Usuario";
   }
 
-  function MostrarUsuario(){
+  function MostrarUsuario() {
       $Usuarios = $this->model->GetUsuario();
       $this->view->Mostrar($this->Titulo, $Usuarios);
   }
 
-
-
-  function InsertUsuario(){
+  function InsertUsuario() {
     $nombre = $_POST["nombre"];
     $pass = $_POST["pass"];
-
-
     $this->model->InsertarUsuario($nombre,$pass);
-
     header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
   }
-
 }
 
  ?>

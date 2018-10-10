@@ -1,6 +1,6 @@
  {include file="nav.tpl"}
 {include file="header.tpl"}
-    <form method="post" action="verificarLogin">
+    <form method="POST" action="verificarLogin">
       <div class="form-group">
         <label for="exampleInputEmail1">Usuario</label>
         <input type="input" class="form-control" name="usuarioId" id="usuarioId" aria-describedby="usuarioId" placeholder="Enter email">

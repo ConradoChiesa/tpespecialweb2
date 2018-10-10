@@ -10,7 +10,7 @@ class UsuarioModel
 
   function Connect() {
     return new PDO('mysql:host=localhost;'
-    .'dbname=personajes;charset=utf8'
+    .'dbname=db_personajes;charset=utf8'
     , 'root', '');
   }
 
@@ -20,18 +20,15 @@ class UsuarioModel
       return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  function GetUser($user) {
+  function GetUsuario($usuario) {
       $sentencia = $this->db->prepare( "select * from usuarios where usuario=? limit 1");
-      $sentencia->execute(array($user));
+      $sentencia->execute(array($usuario));
       return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
   function InsertarUsuario($nombre, $usuario, $email, $password) {
-    $sentencia = $this->db->prepare("INSERT INTO `usuarios`(`nombre`, `usuario`, `E-mail`, `password`) VALUES (?,?,?,?)");
+    $sentencia = $this->db->prepare("INSERT INTO `usuarios`(`nombre`, `usuario`, `e-mail`, `password`) VALUES (?,?,?,?)");
     $sentencia->execute(array($nombre, $usuario, $email, $password));
   }
-
 }
-
-
- ?>
+?>
