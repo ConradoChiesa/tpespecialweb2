@@ -15,13 +15,13 @@ class UsuarioModel
   }
 
   function GetUsuarios() {
-      $sentencia = $this->db->prepare( "select * from usuarios");
+      $sentencia = $this->db->prepare( "SELECT * FROM `usuarios`");
       $sentencia->execute();
       return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
 
   function GetUsuario($usuario) {
-      $sentencia = $this->db->prepare( "select * from usuarios where usuario=? limit 1");
+      $sentencia = $this->db->prepare( "SELECT * FROM `usuarios` WHERE usuario=? limit 1");
       $sentencia->execute(array($usuario));
       return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
@@ -29,6 +29,11 @@ class UsuarioModel
   function InsertarUsuario($nombre, $usuario, $email, $password) {
     $sentencia = $this->db->prepare("INSERT INTO `usuarios`(`nombre`, `usuario`, `e-mail`, `password`) VALUES (?,?,?,?)");
     $sentencia->execute(array($nombre, $usuario, $email, $password));
+  }
+
+  function modificaUsuario($nombre, $usuario, $email) {
+    $sentencia = $this->db->prepare("UPDATE `usuarios` SET `id_usuario`, `nombre`, `usuario`, `e-mail`) VALUES (?,?,?,?)");
+    $sentencia->execute(array($nombre, $usuario, $email));
   }
 }
 ?>

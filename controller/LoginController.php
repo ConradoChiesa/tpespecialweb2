@@ -4,6 +4,7 @@ require_once  "./view/LoginView.php";
 require_once  "./model/UsuarioModel.php";
 require_once  "SecuredController.php";
 
+
 class LoginController extends SecuredController
 {
   private $view;
@@ -17,8 +18,14 @@ class LoginController extends SecuredController
     $this->Titulo = "Login";
   }
 
+
   function login() {
     $this->view->mostrarLogin();
+  }
+
+  function loginAdmin($usuario) {
+    $this->model->getUsuario($usuario);
+    $this->view->mostrarLoginAdmin($usuario);
   }
 
   function logout() {
@@ -29,26 +36,25 @@ class LoginController extends SecuredController
 
   function verificarLogin() {
       $usuario = $_POST["usuarioId"];
-      $pass = $_POST["passwordId"];
+      $password = $_POST["passwordId"];
       $dbUser = $this->model->getUsuario($usuario);
       if(isset($dbUser) && sizeof($dbUser) > 0) {
-          if (password_verify($pass, $dbUser[0]["password"])) {
+          if (password_verify($password, $dbUser[0]["password"])) {
             session_start();
-            $_SESSION["User"] = $usuario;
-            var_dump($dbUser[0]["esadmin"]);
             if (($dbUser[0]["esadmin"]) == 1) {
-              header(HOMEADMIN);
+              $_SESSION["Admin"] = $usuario;
+              $this->view->mostrarLoginAdmin($usuario);
             } else {
-              header(HOMEUSER);
+              $_SESSION["User"] = $usuario;
+              header(HOME);
             }
-
               // header(HOME);
           } else {
             $this->view->mostrarLogin("Contraseña incorrecta");
           }
       } else {
         //No existe el usario
-        $this->view->mostrarLogin("No existe el usario");
+        $this->view->mostrarLogin("No existe el usuario");
       }
   }
 }

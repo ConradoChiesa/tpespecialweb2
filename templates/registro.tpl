@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
+
 {include file="header.tpl"}
 <link href="./css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
   <body>
 {include file="nav.tpl"}
@@ -60,7 +57,3 @@
     	</div>
     </div>
     {include file="footer.tpl"}
-
-</body>
-
-</html>

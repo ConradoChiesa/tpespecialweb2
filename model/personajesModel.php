@@ -32,7 +32,7 @@ class personajesModel
   }
 
   function GetPersonajes() {
-      $sentencia = $this->db->prepare("select * from personaje");
+      $sentencia = $this->db->prepare("SELECT * FROM 'personaje'");
       $sentencia->execute();
       return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }

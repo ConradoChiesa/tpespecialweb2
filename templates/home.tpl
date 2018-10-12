@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html>
 {include file="header.tpl"}
 
   <body>
-    {include file="nav.tpl"}
+    {include file="navuser.tpl"}
     {include file="portada.tpl"}
 
       <div class="container-float">

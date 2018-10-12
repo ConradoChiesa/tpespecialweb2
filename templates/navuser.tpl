@@ -4,7 +4,7 @@
           <a id="inicio" href="home" class="link-barra" data-url="template/portada.tpl">Inicio</a>
         </li>
         <li class="item-barra">
-          <a id="tabla" class="link-barra" data-url="htmls/tabla.html">Tabla</a>
+          <a id="tabla" href="personajes" class="link-barra" data-url="htmls/tabla.html">Personajes</a>
         </li>
         <li class="item-barra">
           <a id="modificardatos" href="modificardatos" class="link-barra" data-url="modificardatos">Modificar Usuario</a>

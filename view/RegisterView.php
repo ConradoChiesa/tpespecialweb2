@@ -12,6 +12,18 @@ class RegisterView
     $this->Smarty->assign('Message',$message); // El 'Titulo' del assign puede ser cualquier valor
     $this->Smarty->display('templates/registro.tpl');
   }
+
+  function modificarDatos($message = '') {
+    $this->Smarty->assign('Titulo',"Modificación Datos de Usuarios");
+    $this->Smarty->assign('Message',$message);
+    $this->Smarty->display('templates/modificarUsuario.tpl');
+  }
+
+  // function usuarioModificado($message='') {
+  //   $this->Smarty->assign('Titulo',"Modificación Datos de Usuarios");
+  //   $this->Smarty->assign('Message',$message);
+  //   $this->Smarty->display('templates/modificarUsuario.tpl');
+  // }
 }
 
  ?>

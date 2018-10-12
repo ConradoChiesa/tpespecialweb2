@@ -12,6 +12,11 @@ class LoginView
     $this->Smarty->assign('Message',$message); // El 'Titulo' del assign puede ser cualquier valor
     $this->Smarty->display('templates/login.tpl');
   }
+  function mostrarLoginAdmin($message = '') {
+    $this->Smarty->assign('Titulo',"Login"); // El 'Titulo' del assign puede ser cualquier valor
+    $this->Smarty->assign('Message',$message); // El 'Titulo' del assign puede ser cualquier valor
+    $this->Smarty->display('templates/admin.tpl');
+  }
 }
 
  ?>

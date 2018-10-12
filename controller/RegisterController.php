@@ -35,6 +35,25 @@ class RegisterController {
       }
     }
   }
+
+  function modificarDatos() {
+    session_start();
+    $usuario = $_SESSION["User"];
+    echo $usuario;
+      if (isset($usuario) && $usuario == true) {
+        $this->view->modificarDatos('Modifique sus datos');
+        // $this->model->GetUsuario($usuario)
+        if ($_SERVER['REQUEST_METHOD'] == 'PUT' ) {
+          $nombre = $_PUT["nombre"];
+          $usuario = $_PUT["usuario"];
+          $email = $_PUT["email"];
+          $this->model->modificaUsuario($nombre, $usuario, $email);
+          $this->view->modificarDatos('Usuario modificado con exito');
+        } else {
+          $this->view->modificarDatos('El ususario no fue modificado');
+        }
+      }
+   }
 }
 
  ?>
