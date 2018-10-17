@@ -1,35 +1,24 @@
 {include file="header.tpl"}
 
-    <h1>{$Titulo}</h1>
+{include file="nav.tpl"}
 
-    <div class="container">
-      <ul class="list-group">
-            {foreach from=$Tareas item=tarea}
-              {if $tarea['completada'] == 1}
-                <li class="list-group-item"><s>{$tarea['titulo']} ----- {$tarea['descripcion']}</s><a href="borrar/{$tarea['id']}">BORRAR</a></li>
-              {else}
-                <li class="list-group-item">{$tarea['titulo']} ----- {$tarea['descripcion']}<a href="borrar/{$tarea['id']}">BORRAR</a> | <a href="completada/{$tarea['id']}">COMPLETADA</a></li>
-              {/if}
-            {/foreach}
-      </ul>
-    </div>
-
-    <div class="container">
-      <h2>Formulario</h2>
-      <form method="post" action="agregar">
-        <div class="form-group">
-          <label for="tituloForm">Titulo</label>
-          <input type="text" class="form-control" id="tituloForm" name="tituloForm">
-        </div>
-        <div class="form-group">
-          <label for="descripcionForm">Descripcion</label>
-          <input type="text" class="form-control" id="descripcionForm" name="descripcionForm">
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="completadaForm" name="completadaForm">
-          <label class="form-check-label" for="completadaForm">Completada?</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Crear Tarea</button>
-      </form>
-    </div>
+      <div class="contenedor">
+    <article class="articulo-uno">
+        <h2>Mafalda</h2>
+        <img src="images/mafalda02.jpg" alt="Mafala mirando el globo terráqueo"/>
+    </article>
+    <article class="articulo-dos">
+        <h2>El Chapulín Colorado</h2>
+        <img src="images/chapulin01.jpg" alt="El Chapulín con su chipote chillón"/>
+    </article>
+    <article class="articulo-tres">
+        <h2>Sandokán</h2>
+        <img src="images/sandokan1.jpg" alt="Sandokán apunta con una pistola"/>
+    </article>
+    <article class="articulo-cuatro">
+        <h2>El Superagente 86</h2>
+        <img src="images/agente03.jpg" alt="El Superagente 86 junto a 91, el Jefe de Control y Siegfried"/>
+    </article>
+</div>
+    
 {include file="footer.tpl"}
