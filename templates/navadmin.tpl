@@ -7,7 +7,7 @@
           <a id="tablaedit" href="crear" class="link-barra" data-url="template/crear.tpl">Crear</a>
         </li>
         <li class="item-barra">
-          <a id="modificardatos" href="modificardatos" class="link-barra" data-url="modificardatos">Modificar Usuario</a>
+          <a id="modificardatos" href="editarDatos" class="link-barra" data-url="modificardatos">Modificar Usuario</a>
         </li>
         <li class="item-barra">
           <a id="logout" href="logout" class="link-barra" data-url="logout">Logout</a>

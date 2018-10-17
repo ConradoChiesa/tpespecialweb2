@@ -26,7 +26,7 @@ class SecuredController
   }
 
   function logeado(){
-    if (isset($_SESSION["Admin"]) && $_SESSION["Admin"] == true) {
+    if ((isset($_SESSION["Admin"]) && $_SESSION["Admin"] == true )) {
       return true;
       //} else {
       //return false;

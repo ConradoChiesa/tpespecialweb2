@@ -32,7 +32,7 @@ class personajesModel
   }
 
   function GetPersonajes() {
-      $sentencia = $this->db->prepare("SELECT * FROM 'personaje'");
+      $sentencia = $this->db->prepare("SELECT * FROM personaje");
       $sentencia->execute();
       return $sentencia->fetchAll(PDO::FETCH_ASSOC);
   }
@@ -49,7 +49,7 @@ class personajesModel
     $sentencia->execute(array("$id"));
     }
 
-  function InsertarTarea($nombre,$nacimiento,$actividad) {
+  function InsertarPersonaje($nombre,$nacimiento,$actividad) {
     $sentencia = $this->db->prepare("INSERT INTO personaje(nombre, nacimiento, actividad) VALUES(?,?,?)");
     $sentencia->execute(array($nombre,$nacimiento,$actividad));
   }

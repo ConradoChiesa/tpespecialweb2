@@ -16,7 +16,7 @@ class personajesController extends SecuredController
   }
 
   function Home() {
-      $Personajes = $this->model->Getpersonajes();
+      $Personajes = $this->model->GetPersonajes();
       $Hechos = $this->model->GetHechos();
       $this->view->Mostrar($Personajes,$Hechos);
   }
@@ -39,7 +39,7 @@ class personajesController extends SecuredController
       $nombre = $_POST["nombreForm"];
       $nacimiento = $_POST["nacimientoForm"];
       $actividad = $_POST["actividadForm"];
-      $this->model->InsertarTarea($nombre,$nacimiento,$actividad);
+      $this->model->InsertarPersonaje($nombre,$nacimiento,$actividad);
       header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]. '/crear'));
     } else {
       echo "Falta llenar algún dato";
@@ -55,57 +55,60 @@ class personajesController extends SecuredController
     $this->model->Completarpersonaje($param[0]);
     header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
   }
+
   function InsertHecho() {
-  if ($_POST["hechoForm"] && $_POST["persoHechoForm"]) {
-    $hecho = $_POST["hechoForm"];
-    $perso = $_POST["persoHechoForm"];
-    $this->model->InsertarHecho($perso,$hecho);
-    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
-  } else {
-    echo "falta algún dato";
+    if ($_POST["hechoForm"] && $_POST["persoHechoForm"]) {
+      $hecho = $_POST["hechoForm"];
+      $perso = $_POST["persoHechoForm"];
+      $this->model->InsertarHecho($perso,$hecho);
+      header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+    } else {
+      echo "falta algún dato";
+    }
   }
-}
 
   function BorrarHecho($param) {
-  $this->model->EliminarHecho($param[0]);
-  header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
-}
+    $this->model->EliminarHecho($param[0]);
+    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+  }
 
   function EditarHecho($param) {
-  $id_hecho = $param[0];
-  $Hecho = $this->model->GetHecho($id_hecho);
-  $this->view->MostrarEditarHecho($Hecho,$id_hecho);
-}
+    $id_hecho = $param[0];
+    $Hecho = $this->model->GetHecho($id_hecho);
+    $this->view->MostrarEditarHecho($Hecho,$id_hecho);
+  }
 
   function ModificarHecho() {
-  if ($_POST["idHecho"] && $_POST["hechoForm"]) {
-    $Id_hecho = $_POST["idHecho"];
-    $Hecho = $_POST["hechoForm"];
-    $this->model->ActualizarHecho($Hecho,$Id_hecho);
-  header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
-  } else {
-    echo "completar todos los datos, para editar";
+    if ($_POST["idHecho"] && $_POST["hechoForm"]) {
+      $Id_hecho = $_POST["idHecho"];
+      $Hecho = $_POST["hechoForm"];
+      $this->model->ActualizarHecho($Hecho,$Id_hecho);
+    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+    } else {
+      echo "completar todos los datos, para editar";
+    }
   }
-}
 
   function EditarPersonaje($param) {
-    $id = $param[0];
-    $Perso = $this->model->GetPersonaje($id);
-    $this->view->MostrarEditarPerso($Perso);
+    if ($this->secCont->logeado()) {
+      $id = $param[0];
+      $Perso = $this->model->GetPersonaje($id);
+      $this->view->MostrarEditarPerso($Perso);
+    }
   }
 
   function ModificarPerso() {
-  if ($_POST["nomPerso"] && $_POST["naciPerso"] && $_POST["actiPerso"]) {
-    $nomPerso = $_POST["nomPerso"];
-    $naciPerso = $_POST["naciPerso"];
-    $actiPerso = $_POST["actiPerso"];
-    $idPerso = $_POST["id_personaje"];
-    $this->model->ActualizarPerso($nomPerso,$naciPerso,$actiPerso,$idPerso);
-    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
-  } else {
-    echo "Faltan datos para poder editar el personaje";
+    if ($_POST["nomPerso"] && $_POST["naciPerso"] && $_POST["actiPerso"]) {
+      $nomPerso = $_POST["nomPerso"];
+      $naciPerso = $_POST["naciPerso"];
+      $actiPerso = $_POST["actiPerso"];
+      $idPerso = $_POST["id_personaje"];
+      $this->model->ActualizarPerso($nomPerso,$naciPerso,$actiPerso,$idPerso);
+      header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+    } else {
+      echo "Faltan datos para poder editar el personaje";
+    }
   }
-}
 }
 
  ?>

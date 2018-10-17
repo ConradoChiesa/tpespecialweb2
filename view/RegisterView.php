@@ -13,9 +13,12 @@ class RegisterView
     $this->Smarty->display('templates/registro.tpl');
   }
 
-  function modificarDatos($message = '') {
+  function modificarDatos($message = '', $usuario = '') {
     $this->Smarty->assign('Titulo',"Modificación Datos de Usuarios");
     $this->Smarty->assign('Message',$message);
+    // $this->Smarty->assign('nombre'($usuario['nombre']));
+    // $this->Smarty->assign('usuario'($usuario['usuario']));
+    // $this->Smarty->assign('e-mail'($usuario['e-mail']));
     $this->Smarty->display('templates/modificarUsuario.tpl');
   }
 

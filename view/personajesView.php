@@ -6,8 +6,9 @@ class personajesView
     $this->Smarty = new Smarty();
   }
 
-  function Mostrar($Personajes){
+  function Mostrar($Personajes, $Hechos){
     $this->Smarty->assign('Personajes',$Personajes);
+    $this->Smarty->assign('Hechos',$Hechos);
     $this->Smarty->display('templates/home.tpl');
   }
 

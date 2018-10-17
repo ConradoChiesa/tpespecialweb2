@@ -2,16 +2,19 @@
 
 require_once  "./view/RegisterView.php";
 require_once  "./model/UsuarioModel.php";
+require_once  "SecuredController.php";
 
 
-class RegisterController {
+class RegisterController extends SecuredController
+{
   private $view;
   private $model;
   private $Titulo;
-
   function __construct() {
+
     $this->view = new RegisterView();
     $this->model = new UsuarioModel();
+    $this->secCont = new SecuredController();
     $this->Titulo = "Registro de usuarios";
   }
 
@@ -35,25 +38,41 @@ class RegisterController {
       }
     }
   }
+  function EditarDatos() {
+    if ($this->secCont->logeado()) {
+      // $id_usuario = $param[0];
+      // $usuario = $this->model->GetUsuario($usuario);
+      $this->view->modificarDatos();
+    }
+  }
 
-  function modificarDatos() {
-    session_start();
-    $usuario = $_SESSION["User"];
-    echo $usuario;
+  // function EditarUsuario($usuario) { //EditarUsuario($param)
+  //   if ($this->secCont->logeado()) {
+  //     $usuario = $this->model->GetUsuario($usuario);
+  //     $this->view->modificarDatos('Modifique sus datos');
+  //   }
+  // }
+  function modificarDatos($usuario) {
+    if ($this->secCont->logeado()) {
       if (isset($usuario) && $usuario == true) {
-        $this->view->modificarDatos('Modifique sus datos');
+        // $this->view->modificarDatos('Modifique sus datos');
         // $this->model->GetUsuario($usuario)
-        if ($_SERVER['REQUEST_METHOD'] == 'PUT' ) {
-          $nombre = $_PUT["nombre"];
-          $usuario = $_PUT["usuario"];
-          $email = $_PUT["email"];
-          $this->model->modificaUsuario($nombre, $usuario, $email);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {
+          $id_usuario = $_POST["id_usuario"];
+          $nombre = $_POST["nombre"];
+          $usuario = $_POST["usuario"];
+          $email = $_POST["email"];
+          $this->model->modificaUsuario($id_usuario, $nombre, $usuario, $email);
           $this->view->modificarDatos('Usuario modificado con exito');
         } else {
-          $this->view->modificarDatos('El ususario no fue modificado');
+          header(LOGIN);
+          // $this->view->modificarDatos('El ususario no fue modificado');
         }
       }
-   }
+    } else {
+      $this->view->modificarDatos('');
+    }
+  }
 }
 
  ?>
