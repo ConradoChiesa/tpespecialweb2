@@ -1,0 +1,91 @@
+<?php
+/* Smarty version 3.1.33, created on 2018-10-14 21:57:36
+  from 'I:\Xampp\htdocs\Dropbox\pn\templates\home.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5bc39fb044a966_29611123',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '574c8b95cc8d68ca7fb0a45bf331236f6b9bad0e' => 
+    array (
+      0 => 'I:\\Xampp\\htdocs\\Dropbox\\pn\\templates\\home.tpl',
+      1 => 1539547054,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.tpl' => 1,
+    'file:footer.tpl' => 1,
+  ),
+),false)) {
+function content_5bc39fb044a966_29611123 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+
+<nav>
+  <button>Inicio</button>
+  <form method="post" action="registrarse">
+    <button type="submit">Registrarse</button>
+  </form>
+
+  <p></p>
+
+  <form method="post" action="logearse">
+    <button type="submit">Login</button>
+  </form>  
+</nav>
+
+
+  <h1>Personajes</h1>
+    
+
+<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Personajes']->value, 'elem');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['elem']->value) {
+?>
+  <li>
+     <?php echo $_smarty_tpl->tpl_vars['elem']->value['nombre'];?>
+
+        <li> 
+            <?php echo $_smarty_tpl->tpl_vars['elem']->value['hecho'];?>
+
+        </li>
+  </li>
+<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+
+
+
+
+<?php echo $_smarty_tpl->tpl_vars['Personajes']->value[0]['nombre'];?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+<?php }
+}

@@ -13,7 +13,7 @@ h1 {
 h2 {
 		text-align: center;
 		font-size: 2rem;
-		color: darkmagenta; 
+		color: darkmagenta;
 	}
 
 h3 {
@@ -27,6 +27,16 @@ p {
 	color: #353334;
 	margin-left: 10%;
 	margin-right: 10%;
+}
+
+.zapatofono {
+	margin: 0 auto;
+	width: 200px;
+}
+
+.persoNombre {
+	color: darkmagenta;
+	font-size: 2rem;
 }
 
 .img-notas {
@@ -58,6 +68,7 @@ p {
 	display: inline-block;
 	margin-top: 1rem;
 	font-size: 1.2rem;
+	text-decoration: none;
 }
 
 .link-barra {
@@ -124,7 +135,7 @@ h5 {
 
 	.contenedor {
 		display: grid;
-		grid-template-areas: 
+		grid-template-areas:
 			"articulo-uno"
 			"articulo-tres"
 			"articulo-dos"
@@ -150,11 +161,11 @@ h5 {
 	.articulo-uno img, .articulo-dos img, .articulo-tres img, .articulo-cuatro img {
 		width: 280px;
 	}
-	
+
 	.articulo-uno, .articulo-dos, .articulo-tres, .articulo-cuatro {
 		text-align: center;
 	}
-	
+
 	.item-barra {
 		margin-top: 0.5rem;
 		font-size: 0.9rem;
@@ -172,7 +183,7 @@ h5 {
 	h2 {
 		text-align: center;
 		font-size: 1.7em;
-		color: darkmagenta; 
+		color: darkmagenta;
 	}
 
 	.img-notas {
@@ -203,10 +214,10 @@ h5 {
 }
 
 @media only screen and (min-width: 480px) and (max-width: 890px) {
-	
+
 	.contenedor {
 		display: grid;
-		grid-template-areas: 
+		grid-template-areas:
 			"articulo-uno"
 			"articulo-dos"
 			"articulo-tres"
@@ -232,7 +243,7 @@ h5 {
 	.articulo-uno img, .articulo-dos img, .articulo-tres img, .articulo-cuatro img {
 		width: 420px;
 	}
-	
+
 	.articulo-uno, .articulo-dos, .articulo-tres, .articulo-cuatro {
 		text-align: center;
 	}
@@ -250,13 +261,17 @@ h5 {
 		width: 450px;
 	}
 
-} 
+	.item-barra a {
+		font-size: 1rem;
+	}
+
+}
 
 @media only screen and (min-width: 890px) {
-	
+
 	.contenedor {
 		display: grid;
-		grid-template-areas: 
+		grid-template-areas:
 			"articulo-dos articulo-uno"
 			"articulo-tres articulo-cuatro";
 	}
@@ -280,7 +295,7 @@ h5 {
 	.articulo-uno img, .articulo-dos img, .articulo-tres img, .articulo-cuatro img {
 		width: 420px;
 	}
-	
+
 	.articulo-uno, .articulo-dos, .articulo-tres, .articulo-cuatro {
 		text-align: center;
 	}
@@ -299,13 +314,33 @@ h5 {
 	}
 
 	h2 {
-		font-size: 2.5rem;
+		font-size: 1.7rem;
 		padding-bottom: 0;
 		padding-top: 1%;
 		margin: 0;
 		margin-bottom: 2%;
 	}
 
+	.item-barra a {
+		padding-right: 5px;
+		padding-left: 5px;
+		font-size: 1.1rem;
+	}	
+
+	.listaPersonajes {
+		font-size: 1.8rem;
+		padding-top: 18px;
+	}
+
+}
+
+a {
+	text-decoration: none;
+	color: darkmagenta;
+}
+
+.item-barra a {
+	padding-right: 5px;
 }
 
 .oculta {
@@ -317,7 +352,7 @@ h5 {
 }
 
 .verde {
-	background-color:  #73d057; 
+	background-color:  #73d057;
 }
 
 .amarillo {
@@ -331,4 +366,34 @@ h5 {
 }
 .gris {
 	background-color:  #d3d3d3;
+}
+
+.crearPersoHechos {
+	padding: 5px;
+	font-size: 1.2rem;
+}
+
+.conteListaPerso, .conteListaPerso p {
+	display: block;
+	font-size: 1rem;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.btn-perso {
+	font-size: 1rem;
+}
+
+h4 {
+	font-size: 1.2rem;
+	margin-bottom: 0;
+}
+
+.conteFormRegistro {
+	padding-bottom: 10%;
+	padding-top: 50px;
+}
+
+.centrado {
+	text-align: center;
 }
