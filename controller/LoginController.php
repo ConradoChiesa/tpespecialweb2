@@ -23,7 +23,7 @@ class LoginController
         $email = $_POST["email"];
         $pass = $_POST["pass"];
         $dbUser = $this->model->GetUser($email);
-        if(isset($dbUser)){
+        if(isset($dbUser[0])){
             if (password_verify($pass, $dbUser[0]["pass"])){
                 session_start();
                 $_SESSION["user"] = $email;
