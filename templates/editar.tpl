@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-
+{include file="nav.tpl"}
     <h2>Editar</h2>
 
     <div class="container">

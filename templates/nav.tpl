@@ -1,16 +1,26 @@
-<nav>
-    <ul class="barra">
-        <li class="item-barra" >
-          <a id="inicio" href="home" class="link-barra" data-url="template/portada.tpl">Inicio</a>
-        </li>
-        <li class="item-barra">
-          <a id="tabla" class="link-barra" data-url="htmls/tabla.html">Tabla</a>
-        </li>
-        <li class="item-barra">
-          <a id="registro" href="registro" class="link-barra" data-url="">Registrarse</a>
-        </li>
-        <li class="item-barra">
-          <a id="login" href="login" class="link-barra" data-url="login">Login</a>
-        </li>
-      </ul>
-</nav>
+<h1>Personajes Notables</h1>
+        <h3 class="eslogan">De Argentina y el mundo.</h3>
+
+<ul class="barra">
+  <li class="item-barra">
+    <a href="home">Inicio</a>
+  </li>
+  <li class="item-barra">
+    <a href="personajes">Ver personajes</a>
+  </li>
+  <li class="item-barra">
+    <a href="crear">Crear</a>
+  </li>
+  <li class="item-barra">
+    <a href="login">Logearse</a>
+  </li>
+  <li class="item-barra">
+    <a href="registrarse">Registrarse</a>
+  </li>
+  <li class="item-barra">
+    <a href="logout">Cerrar sesión</a>
+  </li>
+  <li class="item-barra">
+    <a href="editar">Editar</a>
+  </li>
+</ul>

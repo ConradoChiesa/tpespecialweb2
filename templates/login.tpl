@@ -1,5 +1,5 @@
- {include file="nav.tpl"}
 {include file="header.tpl"}
+ {include file="nav.tpl"}
     <form method="POST" action="verificarLogin">
       <div class="form-group">
         <label for="exampleInputEmail1">Usuario</label>

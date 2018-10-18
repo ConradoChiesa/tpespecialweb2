@@ -1,43 +1,24 @@
 {include file="header.tpl"}
 
-  <body>
-    {include file="navuser.tpl"}
-    <!-- {include file="portada.tpl"} -->
+{include file="nav.tpl"}
 
-      <h2>Lista de personajes</h2>
-        <div class="container">
-          <ul class="list-group">
-
-                {foreach from=$Personajes item=elem}
-                  <li class="list-group-item">{$elem['nombre']}  {$elem['actividad']}  {$elem['nacimiento']}
-                    <a href="editarPersonaje/{$elem['id_personaje']}">Editar</a>
-                    <a href="borrarPersonaje/{$elem['id_personaje']}">Borrar</a> </li>
-
-                {/foreach}
-
-          </ul>
-        </div>
-
-
-      <h2>Lista de hechos</h4>
-        <div class="container">
-          <ul class="list-group">
-
-            {foreach from=$Hechos item=elem}
-
-              <li class="list-group-item"> {$elem['nombre']} {$elem['hecho']}
-                <a href="editarHecho/{$elem['id_hecho']}">Editar</a>
-                <a href="borrarHecho/{$elem['id_hecho']}">Borrar</a>
-                </li>
-
-            {/foreach}
-
-          </ul>
-        </div>
-
-
-      {include file="footer.tpl"}
-
-  </body>
-
-</html>
+      <div class="contenedor">
+    <article class="articulo-uno">
+        <h2>Mafalda</h2>
+        <img src="images/mafalda02.jpg" alt="Mafala mirando el globo terráqueo"/>
+    </article>
+    <article class="articulo-dos">
+        <h2>El Chapulín Colorado</h2>
+        <img src="images/chapulin01.jpg" alt="El Chapulín con su chipote chillón"/>
+    </article>
+    <article class="articulo-tres">
+        <h2>Sandokán</h2>
+        <img src="images/sandokan1.jpg" alt="Sandokán apunta con una pistola"/>
+    </article>
+    <article class="articulo-cuatro">
+        <h2>El Superagente 86</h2>
+        <img src="images/agente03.jpg" alt="El Superagente 86 junto a 91, el Jefe de Control y Siegfried"/>
+    </article>
+</div>
+    
+{include file="footer.tpl"}

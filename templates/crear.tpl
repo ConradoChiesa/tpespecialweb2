@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-{include file="navadmin.tpl"}
+{include file="nav.tpl"}
 
 <h2>Crear</h2>
 
@@ -22,7 +22,7 @@
         <button type="submit" class="btn btn-primary">Crear Personaje</button>
       </form>
     </div>
-
+  
      <div class="container">
       <h2>Crear hecho</h2>
       <form method="post" action="agregarHecho">

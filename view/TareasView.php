@@ -17,6 +17,13 @@ class TareasView
 
   }
 
+  function MostrarEdicion($Personajes,$Hechos){
+    $this->Smarty->assign('Personajes',$Personajes);
+    $this->Smarty->assign('Hechos',$Hechos);
+    $this->Smarty->display('templates/edicion.tpl');
+
+  }
+
   function MostrarCrear($Personajes,$Hechos){
     $this->Smarty->assign('Personajes',$Personajes);
     $this->Smarty->assign('Hechos',$Hechos);
@@ -38,9 +45,22 @@ class TareasView
   }
 
   function Logearse(){
-      $this->Smarty->display('templates/login.tpl');
-    }
+    $this->Smarty->display('templates/login.tpl');
+  }
+
+  function MostrarPersonajes($Personajes,$Hechos) {
+    $this->Smarty->assign('Personajes',$Personajes);
+    $this->Smarty->assign('Hechos',$Hechos);
+    $this->Smarty->display('templates/personajes.tpl');
+  }
+
+  function MostrarHechosDePersonajes($HechosDePersonaje,$Personaje) {
+    $this->Smarty->assign('HechosDePersonaje',$HechosDePersonaje);
+    $this->Smarty->assign('Personaje',$Personaje);
+    $this->Smarty->display('templates/hechosDePersonaje.tpl');    
+  }
+ 
 
 }
 
- ?> 
+ ?>

@@ -1,14 +1,16 @@
 <?php
 
+
 class UsuarioModel
 {
   private $db;
 
-  function __construct() {
+  function __construct()
+  {
     $this->db = $this->Connect();
   }
 
-  function Connect() {
+  function Connect(){
     return new PDO('mysql:host=localhost;'
     .'dbname=db_personajes;charset=utf8'
     , 'root', '');
@@ -35,5 +37,9 @@ class UsuarioModel
     $sentencia = $this->db->prepare("UPDATE `usuarios` SET `id_usuario`, `nombre`, `usuario`, `e-mail`) VALUES (?,?,?,?) WHERE id_usuario=?") ;
     $sentencia->execute(array($id_usuario, $nombre, $usuario, $email));
   }
+
+
 }
-?>
+
+
+ ?>

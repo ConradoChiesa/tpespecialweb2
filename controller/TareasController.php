@@ -1,68 +1,78 @@
 <?php
 require_once  "./view/TareasView.php";
 require_once  "./model/TareasModel.php";
+require_once  "SecuredController.php";
 
-class TareasController
+class TareasController extends SecuredController
 {
   private $view;
   private $model;
 
-  function __construct() {
+  function __construct()
+  {
+    parent::__construct();
     $this->view = new TareasView();
     $this->model = new TareasModel();
   }
 
-  function homeuser() {
-      $Personajes = $this->model->GetPersonajes();
-      $Hechos = $this->model->GetHechos();
-      $this->view->Mostrar($Personajes,$Hechos);
+  function Home(){
+    $Personajes = $this->model->GetPersonajes();
+    $Hechos = $this->model->GetHechos();
+    $this->view->Mostrar($Personajes,$Hechos);
   }
 
-  function Crear() {
+  function Edicion(){
+    $Personajes = $this->model->GetPersonajes();
+    $Hechos = $this->model->GetHechos();
+    $this->view->MostrarEdicion($Personajes,$Hechos);
+  }
+
+  function Crear(){
       $Personajes = $this->model->GetPersonajes();
       $Hechos = $this->model->GetHechos();
       $this->view->MostrarCrear($Personajes,$Hechos);
   }
 
-  function Logearse() {
-      $this->view->Logearse();
-  }
-
-  function InsertPersonaje() { //no necesita parametros, porque lo traigo por post
+  function InsertPersonaje(){
     if ($_POST["nombreForm"] && $_POST["nacimientoForm"] && $_POST["actividadForm"]) {
       $nombre = $_POST["nombreForm"];
       $nacimiento = $_POST["nacimientoForm"];
       $actividad = $_POST["actividadForm"];
       $this->model->InsertarTarea($nombre,$nacimiento,$actividad);
-      header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+      header(HOME);
+      die();
     } else {
       echo "Falta llenar algún dato";
     }
 
+
   }
 
-  function InsertHecho() {
+  function InsertHecho(){
     if ($_POST["hechoForm"] && $_POST["persoHechoForm"]) {
       $hecho = $_POST["hechoForm"];
       $perso = $_POST["persoHechoForm"];
       $this->model->InsertarHecho($perso,$hecho);
-      header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+      header(HOME);
+      die();
     } else {
       echo "falta algún dato";
     }
   }
 
-  function BorrarPersonaje($param) {
+  function BorrarPersonaje($param){
     $this->model->EliminarPersonaje($param[0]);
-    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+    header(HOME);
+    die();
   }
 
-  function BorrarHecho($param) {
+  function BorrarHecho($param){
     $this->model->EliminarHecho($param[0]);
-    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+    header(HOME);
+    die();
   }
 
-  function EditarHecho($param) {
+  function EditarHecho($param){
     $id_hecho = $param[0];
     $Hecho = $this->model->GetHecho($id_hecho);
     $this->view->MostrarEditarHecho($Hecho,$id_hecho);
@@ -73,13 +83,14 @@ class TareasController
       $Id_hecho = $_POST["idHecho"];
       $Hecho = $_POST["hechoForm"];
       $this->model->ActualizarHecho($Hecho,$Id_hecho);
-    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+    header(HOME);
+    die();
     } else {
       echo "completar todos los datos, para editar";
     }
   }
 
-  function EditarPersonaje($param) {
+  function EditarPersonaje($param){
       $id = $param[0];
       $Perso = $this->model->GetPersonaje($id);
       $this->view->MostrarEditarPerso($Perso);
@@ -92,11 +103,13 @@ class TareasController
       $actiPerso = $_POST["actiPerso"];
       $idPerso = $_POST["id_personaje"];
       $this->model->ActualizarPerso($nomPerso,$naciPerso,$actiPerso,$idPerso);
-      header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+      header(HOME);
+      die();
     } else {
       echo "Faltan datos para poder editar el personaje";
     }
   }
+
 }
 
  ?>

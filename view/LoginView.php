@@ -3,7 +3,8 @@ class LoginView
 {
   private $Smarty;
 
-  function __construct() {
+  function __construct()
+  {
     $this->Smarty = new Smarty();
   }
 
@@ -11,11 +12,6 @@ class LoginView
     $this->Smarty->assign('Titulo',"Login"); // El 'Titulo' del assign puede ser cualquier valor
     $this->Smarty->assign('Message',$message); // El 'Titulo' del assign puede ser cualquier valor
     $this->Smarty->display('templates/login.tpl');
-  }
-  function mostrarLoginAdmin($message = '') {
-    $this->Smarty->assign('Titulo',"Login"); // El 'Titulo' del assign puede ser cualquier valor
-    $this->Smarty->assign('Message',$message); // El 'Titulo' del assign puede ser cualquier valor
-    $this->Smarty->display('templates/admin.tpl');
   }
 }
 

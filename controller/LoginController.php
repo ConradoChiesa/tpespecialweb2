@@ -43,7 +43,7 @@ class LoginController extends SecuredController
             session_start();
             if (($dbUser[0]["esadmin"]) == 1) {
               $_SESSION["Admin"] = $usuario;
-              $this->view->mostrarLoginAdmin($usuario);
+              header(HOME);
             } else {
               $_SESSION["User"] = $usuario;
               header(HOME);

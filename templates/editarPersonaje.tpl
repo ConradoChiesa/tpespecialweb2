@@ -1,13 +1,11 @@
 {include file="header.tpl"}
-
-
+{include file="nav.tpl"}
 
 <h2>Editar personaje: </h2>
 
 <p></p>
 
-
-  <form method="post" action="{$home}/modificarPerso">
+  <form method="post" action="modificarPerso">
     <label for="nombrePerso">Nombre: </label>
     <input type="text" id="nomPerso" name="nomPerso" placeholder="{$Perso['nombre']}">
 

@@ -1,32 +1,63 @@
 <?php
 require_once  "./view/UsuarioView.php";
 require_once  "./model/UsuarioModel.php";
-require_once  "./controller/SecuredController.php";
+require_once "SecuredController.php";
 
-class UsuarioController extends SecuredController
+class UsuarioController
 {
   private $view;
   private $model;
   private $Titulo;
 
-  function __construct() {
-    parent::__construct();
+  function __construct()
+  {
     $this->view = new UsuarioView();
     $this->model = new UsuarioModel();
-    $this->Titulo = "Lista de Usuario";
+    $this->Titulo = "Lista de usuarios";
   }
 
-  function MostrarUsuario() {
+  function MostrarUsuario(){
       $Usuarios = $this->model->GetUsuario();
       $this->view->Mostrar($this->Titulo, $Usuarios);
   }
 
-  function InsertUsuario() {
-    $nombre = $_POST["nombre"];
-    $pass = $_POST["pass"];
-    $this->model->InsertarUsuario($nombre,$pass);
-    header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
+  function register() {
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' ) {
+      //GET formulario de registro
+      $this->view->mostrarRegistro();
+    } else {
+      //POST formulario. datos: nombre, user, email, password
+      $nombre = $_POST["nombre"];
+      $usuario = $_POST["usuario"];
+      $email = $_POST["email"];
+      $password = $_POST["password"];
+      $repassword = $_POST["password_confirmation"];
+      if ($password == $repassword) {
+        // $ususarios = $this->model->GetUsuarios();
+
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $this->model->InsertarUsuario($nombre, $usuario, $email, $password);
+        header(LOGIN);
+      } else {
+        $this->view->mostrarRegistro("Passwor incorrecto");
+      }
+    }
   }
+  // function AgregarUsuario(){
+  //   // chequear si el usuario ya existe
+  //   if ((isset($_POST["email"]))&&($_POST["pass"] == $_POST["passcheq"])&&($_POST["pass"]!="")) {
+  //     $email = $_POST["email"];
+  //     $pass = $_POST["pass"];
+  //     $hash = password_hash("$pass", PASSWORD_DEFAULT);
+  //     $this->model->InsertarUsuario($email,$hash);
+  //     header(LOGEARSE);
+  //   } else {
+  //     header(REGISTRARSE);
+  //     die();
+  //   }
+  // }
+
+
 }
 
  ?>
