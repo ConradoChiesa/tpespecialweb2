@@ -1,7 +1,7 @@
 <?php
 require_once  "./view/UsuarioView.php";
 require_once  "./model/UsuarioModel.php";
-require_once "SecuredController.php";
+// require_once "SecuredController.php";
 
 class UsuarioController
 {
@@ -16,7 +16,7 @@ class UsuarioController
     $this->Titulo = "Lista de usuarios";
   }
 
-  function MostrarUsuario(){
+  function MostrarUsuario() {
       $Usuarios = $this->model->GetUsuario();
       $this->view->Mostrar($this->Titulo, $Usuarios);
   }

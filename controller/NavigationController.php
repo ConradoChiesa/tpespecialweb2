@@ -15,7 +15,7 @@ class NavigationController
     $this->viewUser = new UsuarioView();
   }
 
-  function Home(){
+  function Home() {
     $Personajes = $this->model->GetPersonajes();
     $Hechos = $this->model->GetHechos();
     $this->view->Mostrar($Personajes,$Hechos);

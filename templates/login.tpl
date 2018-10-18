@@ -3,7 +3,7 @@
     <form method="POST" action="verificarLogin">
       <div class="form-group">
         <label for="exampleInputEmail1">Usuario</label>
-        <input type="input" class="form-control" name="usuarioId" id="usuarioId" aria-describedby="usuarioId" placeholder="Enter email">
+        <input type="input" class="form-control" name="usuarioId" id="usuarioId" aria-describedby="usuarioId" placeholder="Usuario">
         </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
