@@ -12,6 +12,10 @@ class LoginView
     $this->Smarty->assign('Message', $message);
     $this->Smarty->display('templates/login.tpl');
   }
+  
+  function Logearse(){
+    $this->Smarty->display('templates/login.tpl');
+  }
 
   function Logueado() {
     $Log = "true";

@@ -8,26 +8,25 @@ class TareasController extends SecuredController
   private $view;
   private $model;
 
-  function __construct()
-  {
+  function __construct() {
     parent::__construct();
     $this->view = new TareasView();
     $this->model = new TareasModel();
   }
 
-  function Edicion(){
+  function Edicion() {
     $Personajes = $this->model->GetPersonajes();
     $Hechos = $this->model->GetHechos();
     $this->view->MostrarEdicion($Personajes,$Hechos);
   }
 
-  function Crear(){
+  function Crear() {
       $Personajes = $this->model->GetPersonajes();
       $Hechos = $this->model->GetHechos();
       $this->view->MostrarCrear($Personajes,$Hechos);
   }
 
-  function InsertPersonaje(){
+  function InsertPersonaje() {
     if ($_POST["nombreForm"] && $_POST["nacimientoForm"] && $_POST["actividadForm"]) {
       $nombre = $_POST["nombreForm"];
       $nacimiento = $_POST["nacimientoForm"];
@@ -43,7 +42,7 @@ class TareasController extends SecuredController
     }
   }
 
-  function InsertHecho(){
+  function InsertHecho() {
     if ($_POST["hechoForm"] && $_POST["persoHechoForm"]) {
       $hecho = $_POST["hechoForm"];
       $perso = $_POST["persoHechoForm"];
@@ -59,19 +58,19 @@ class TareasController extends SecuredController
     }
   }
 
-  function BorrarPersonaje($param){
+  function BorrarPersonaje($param) {
     $this->model->EliminarPersonaje($param[0]);
     header(PERSONAJES);
     die();
   }
 
-  function BorrarHecho($param){
+  function BorrarHecho($param) {
     $this->model->EliminarHecho($param[0]);
     header(PERSONAJES);
     die();
   }
 
-  function EditarHecho($param){
+  function EditarHecho($param) {
     $id_hecho = $param[0];
     $Hecho = $this->model->GetHecho($id_hecho);
     $this->view->MostrarEditarHecho($Hecho,$id_hecho);
@@ -89,7 +88,7 @@ class TareasController extends SecuredController
     }
   }
 
-  function EditarPersonaje($param){
+  function EditarPersonaje($param) {
       $id = $param[0];
       $Perso = $this->model->GetPersonaje($id);
       $this->view->MostrarEditarPerso($Perso);

@@ -3,7 +3,7 @@
 class SecuredController
 {
 
-  function __construct(){
+  function __construct() {
 
     session_start();
     if(isset($_SESSION["user"])){
@@ -17,7 +17,7 @@ class SecuredController
     }
   }
 
-  function logout(){
+  function logout() {
     session_start();
     session_destroy();
     header(HOME);

@@ -41,9 +41,9 @@ class TareasView
     $this->Smarty->display('templates/editarPersonaje.tpl');
   }
 
-  function Logearse(){
-    $this->Smarty->display('templates/login.tpl');
-  }
+  // function Logearse(){
+  //   $this->Smarty->display('templates/login.tpl');
+  // }
 
   function MostrarPersonajes($Personajes,$Hechos) {
     $this->Smarty->assign('Personajes',$Personajes);

@@ -8,14 +8,13 @@ class NavigationController
   private $view;
   private $model;
 
-  function __construct()
-  {
+  function __construct() {
     $this->view = new TareasView();
     $this->model = new TareasModel();
     $this->viewUser = new UsuarioView();
   }
 
-  function Home(){
+  function Home() {
     $this->view->MostrarHome();
   }
 

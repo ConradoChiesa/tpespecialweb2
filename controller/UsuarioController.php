@@ -9,19 +9,18 @@ class UsuarioController
   private $model;
   private $Titulo;
 
-  function __construct()
-  {
+  function __construct() {
     $this->view = new UsuarioView();
     $this->model = new UsuarioModel();
     $this->Titulo = "Lista de usuarios";
   }
 
-  function MostrarUsuario(){
+  function MostrarUsuario() {
       $Usuarios = $this->model->GetUsuario();
       $this->view->Mostrar($this->Titulo, $Usuarios);
   }
 
-  function AgregarUsuario(){
+  function AgregarUsuario() {
     // chequear si el usuario ya existe
     if ((isset($_POST["email"]))&&($_POST["pass"] == $_POST["passcheq"])&&($_POST["pass"]!="")) {
       $email = $_POST["email"];
@@ -34,7 +33,6 @@ class UsuarioController
       die();
     }
   }
-
 
 }
 
